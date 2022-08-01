@@ -1,0 +1,164 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="shortcut icon" href="../../favIcon.png" type="image/x-icon">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <title>HanikO - Invoice</title>
+  </head>
+  <body id="body">
+    <div class="print" onclick="window.print()">
+      <div class="icon-printer" style="clear: left; float: left;">
+        <div class="printer-body" style="background-color: #00aaee"></div>
+        <div class="printer-top"></div>
+        <div class="printer-bottom"></div>
+        <div class="printer-file-top" style="background-color: #44ccff"></div>
+        <div class="printer-dot" style="left: 65%"></div>
+        <div class="printer-line" style="left: 50%; top: 32%; margin-left: -12%"></div>
+        <div class="printer-line" style="left: 50%; top: 42%; margin-left: -12%"></div>
+        <div class="printer-file-bottom" style="background-color: #44ccff"></div>
+      </div>
+    </div>
+    <div class="container" id="container">
+      <h1>Facture d'achats</h1>
+      <div class="devise">
+        <p>Devise :</p>
+        <select onclick="Currency()" name="" id="select">
+          <option id="one"></option>
+          <option value="MAD">MAD</option>
+          <option value="Dollar">$</option>
+          <option value="Euro">€</option>
+          <option value="AED">AED</option>
+        </select>
+      </div>
+      <div class="left">
+        <label onchange="getImagePreview(event)" class="logo">
+          <input hidden type="file" id="logo" accept="image/png,image/jpeg " />
+          <div id="span-logo">
+            <p id="prr">+ Ajouter votre logo</p>
+            <span id="span-llogo"></span>
+          </div>
+        </label>
+      </div>
+      <div class="facture-solde">
+        <label for="NF"> N° Facture:</label><input id="NF" type="text" />
+        <br />
+        <label> Date Facture:</label><input type="date" />
+        <br />
+        <span
+          ><em id="Solde-du">Solde du</em
+          ><em class="currency"> MAD </em> 84</span
+        >
+      </div>
+      <div class="buyer-info">
+        <input type="text" title="Full Name" />
+        <label for="Adresse">Adresse</label>
+        <input type="text" id="Adresse" />
+      </div>
+      <div class="produit" id="produit">
+        <table id="table">
+          <tr>
+            <td>Produit</td>
+            <td>Quantite</td>
+            <td>Prix unitaire</td>
+            <td>Total:</td>
+            <td></td>
+          </tr>
+          <tr id="toAddON">
+            <td style="display: block;">
+              <select
+                value=""
+                onclick="addProduit()"
+                name=""
+                id="listDeProduit"
+              >
+                <optgroup label="PC Portable">
+                  <option value="HP">PC Portable HP Pro 174</option>
+                  <option value="LENOVO">PC Portable LENOVO</option>
+                  <option value="ASUS">PC Portable ASUS</option>
+                </optgroup>
+                <optgroup label="SMART PHONES">
+                  <option value="SAMSUNG">Smart PHONE,SAMSUNG NOTE 9</option>
+                  <option value="REDMI">Smart PHONE,REDMI 9T</option>
+                  <option value="IPHONE">Smart PHONE,IPHONE 13 PRO</option>
+                </optgroup>
+              </select>
+            </td>
+            <td>
+              <input
+                type="number"
+                value="1"
+                id="QT"
+                onchange="addProduit()"
+                min="1"
+                max="10"
+                
+              />
+            </td>
+            <td>
+              <span class="currency">MAD</span
+              ><input
+                type="number"
+                readonly
+                style="cursor: default"
+                id="PRIX-UNITAIRE"
+                value="2540"
+              />
+            </td>
+            <td>
+              <span class="currency">MAD</span
+              ><input
+                type="number"
+                readonly
+                style="cursor: default"
+                id="PRIX-TOTAL"
+                value="2540"
+              />
+            </td>
+            <td class="delete">
+              <span id="delete">X</span>
+            </td>
+          </tr>
+        </table>
+      
+      </div>
+      
+      <button type="button" onclick="Add()">+Nouveau Produit</button>
+      
+      <div class="total">
+        <label>Total</label><span class="currency">MAD</span>
+        <em id="tot">0</em>
+        <br />
+        <label>Solde%</label
+        ><input readonly type="number" value="10" id="solde" />
+        <br />
+        <label>Taxe%</label
+        ><input readonly type="number" value="20" id="taxe" />
+        <br />
+        <label>Frais de livraison</label
+        ><input readonly type="number" value="0" id="livraison" />
+        <br />
+        <label>Total facture</label><span class="currency">MAD</span>
+        <em id="totf">0</em>
+        <br />
+        <label>Montant a paye</label
+        ><input readonly type="text" value="0" id="montantPaye" />
+      </div>
+      <div class="notes">
+        <p>Notes</p>
+        <input type="text" value="Client VIP" readonly />
+      </div>
+      <div class="calculer-enregistrer">
+        <button type="button" onclick="Calculer()">Calculer Montant a paye</button>
+        <button type="button" id="download" onclick="generatePDF()">Enregistrer la facture</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

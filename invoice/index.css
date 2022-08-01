@@ -1,0 +1,471 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(130, 255, 0);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 131, 255);
+  border-radius: 25px;
+  border: 4px solid rgb(130, 255, 0);
+} */
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgb(41, 41, 41);
+  border: 3px solid rgba(200, 200, 200, 5);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #464545;
+  /* border: 3px solid rgb(41, 41, 41); */
+}
+
+body {
+  background: linear-gradient(180deg, #ffb7b7 0%, #727272 100%),
+    radial-gradient(60.91% 100% at 50% 0%, #ffd1d1 0%, #260000 100%),
+    linear-gradient(127.43deg, #00ffff 0%, #ffffff 100%),
+    radial-gradient(100.22% 100% at 70.57% 0%, #ff0000 0%, #00ffe0 100%),
+    linear-gradient(64.82deg, #dbff00 0%, #3300ff 100%);
+  background-blend-mode: screen, overlay, color-burn, color-dodge, normal;
+  color: rgb(39, 187, 125);
+  text-shadow: rgba(17, 22, 22, 1.54) 2px 7px 4px;
+}
+
+
+.print {
+  position: fixed;
+  z-index: 22;
+  top: 50vh;
+  left: -2.3vw;
+  cursor: pointer;
+}
+
+.print:active {
+  transform: scale(1.2);
+}
+
+.icon-printer {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+.icon-printer .printer-body {
+  width: 80%;
+  height: 42%;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  margin-left: -40%;
+  background-color: transparent;
+  border-top-left-radius: 25%;
+  border-top-right-radius: 25%;
+  border-bottom-left-radius: 75%;
+  border-bottom-right-radius: 75%;
+}
+
+.icon-printer .printer-top {
+  width: 60%;
+  height: 15%;
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  margin-left: -30%;
+  background-color: rgba(113, 113, 114, 0.5);
+  border-radius: 20%;
+}
+
+.icon-printer .printer-bottom {
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  left: 50%;
+  bottom: -38%;
+  margin-left: -30%;
+  background-color: rgba(113, 113, 114, 0.5);
+  border-radius: 15%;
+}
+
+.icon-printer .printer-file-bottom {
+  width: 50%;
+  height: 16%;
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  margin-left: -25%;
+  background-color: #000;
+  border-radius: 20%;
+}
+
+.icon-printer .printer-file-top {
+  width: 50%;
+  height: 34%;
+  position: absolute;
+  left: 50%;
+  margin-left: -25%;
+  top: 23%;
+  background-color: #000;
+  border-radius: 10%;
+}
+
+.icon-printer .printer-dot {
+  width: 6%;
+  height: 6%;
+  position: absolute;
+  top: 65%;
+  background-color: rgb(104, 102, 102);
+  border-radius: 100%;
+}
+
+.icon-printer .printer-line {
+  width: 24%;
+  height: 4%;
+  position: absolute;
+  background-color: rgb(104, 102, 102);
+  border-radius: 15%;
+}
+
+
+em {
+  display: inline-block;
+  font-style: normal;
+}
+
+input {
+  text-transform: capitalize;
+  outline: none;
+  border: rgb(163, 112, 122) solid 2px;
+  padding: 2px 6px;
+}
+
+.container {
+  backdrop-filter: blur(7px) saturate(150%);
+  -webkit-backdrop-filter: blur(4px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.6);
+  border: 1px solid #111616;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 8px #111616;
+  width: 90%;
+  margin: 10px auto 15px;
+  padding: 15px 35px;
+}
+
+.container h1 {
+  text-align: center;
+  letter-spacing: 2px;
+  padding-top: 8px;
+  font-family: "Mulish", sans-serif;
+}
+
+.container select {
+  padding: 3px 1px;
+  border-radius: 3px;
+  outline: none;
+  border-color: #ccc;
+}
+
+.container #select {
+  width: 100%;
+  margin: 9px 0;
+}
+
+.container #select #one {
+  display: none;
+}
+
+.container .left {
+  display: inline-block;
+}
+
+.container label.logo {
+  cursor: pointer;
+  display: block;
+  margin: 25px 0;
+}
+
+.container #prr {
+  color: white;
+  font-weight: 900;
+  background-color: rgb(109, 105, 105);
+  padding: 19px 45px;
+}
+
+.container label.logo:hover #prr {
+  filter: sepia(2);
+}
+
+.container label.logo:active #prr {
+  transform: scale(1.05);
+  filter: blur(0.3px);
+}
+
+.container .facture-solde {
+  float: right;
+  margin-top: 15px;
+}
+
+.container .facture-solde label {
+  display: inline-block;
+  width: 100px;
+}
+
+.container .facture-solde input {
+  margin-bottom: 9px;
+}
+
+.container .facture-solde span {
+  display: block;
+  background-color: rgba(30, 108, 145, 0.45);
+  width: 100%;
+  padding: 5px 15px 10px;
+  font-weight: bold;
+}
+
+.container .facture-solde em#Solde-du {
+  background-color: white;
+  width: 80px;
+  margin-right: 5px;
+  text-shadow: rgba(17, 22, 22, 0.7) 2px 4px 4px;
+}
+
+.container .buyer-info input {
+  display: block;
+  width: 20.2%;
+  margin-bottom: 5px;
+}
+
+.container .buyer-info label {
+  display: block;
+  font-weight: 900;
+  padding-bottom: 5px;
+}
+
+.container .produit table tr:first-of-type {
+  text-align: center;
+  font-weight: bold;
+}
+
+.container .produit table tr#toAddON td {
+  padding-right: 9px;
+  padding-bottom: 5px;
+}
+
+.container .produit table tr#toAddON td:first-of-type select {
+  width: 25vw;
+  border: rgb(163, 112, 122) solid 2px;
+}
+
+.container .produit table tr#toAddON td:nth-of-type(2) input {
+  width: 12vw;
+}
+
+.container .produit table tr#toAddON td:nth-of-type(3) input,
+.container .produit table tr#toAddON td:nth-of-type(4) input {
+  width: 7vw;
+}
+
+.container .produit table tr#toAddON span {
+  background-color: rgba(30, 108, 145, 0.45);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.container .produit table tr#toAddON td:last-of-type span#delete {
+  cursor: pointer;
+  color: white;
+  font-weight: normal;
+  border-radius: 4px;
+  padding: 3px 5px;
+  background-color: darkred;
+  box-shadow: 0 0 5px 2px black;
+}
+
+.container .produit table tr#toAddON td:last-of-type span#delete:active {
+  font-weight: bold;
+  padding: 5px 7px;
+  filter: blur(0.5px);
+}
+
+button {
+  cursor: pointer;
+  margin: 8px 5px;
+  padding: 8px 10px;
+  color: white;
+  background-color: #1ca7ac;
+  outline: none;
+  border: 1px solid #1ca7ac;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: coral;
+  background-color: #239191;
+}
+
+button:active {
+  transform: scale(1.05);
+  filter: blur(0.6px);
+}
+
+.container .total {
+  margin-left: 65%;
+  border: 1px dashed rgb(153, 149, 149);
+  border-top: 1px dashed rgb(75, 74, 74);
+  border-left: 1px dashed rgb(194, 192, 192);
+  width: fit-content;
+  padding: 6px 30px 6px 10px;
+}
+
+.container .total label {
+  display: inline-block;
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.container .total input {
+  cursor: default;
+}
+
+.container .total span {
+  background-color: rgba(30, 108, 145, 0.45);
+}
+
+.container .total em {
+  font-style: normal;
+}
+
+.container .notes p {
+  font-weight: bold;
+}
+
+.container .notes input {
+  cursor: default;
+  width: 90%;
+  margin-bottom: 5px;
+}
+
+.container .calculer-enregistrer {
+  display: flex;
+  justify-content: center;
+}
+
+.container .total em {
+  font-weight: bold;
+}
+
+
+@media print {
+  body {
+    background: none;
+    background-color: white;
+    color: black !important;
+    text-shadow: none !important;
+  }
+
+  .print {
+    display: none;
+  }
+
+  .container .facture-solde em#Solde-du {
+    text-shadow: none;
+  }
+
+  .container {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: white;
+    border: 1px solid #111616;
+    border-radius: 10px;
+    box-shadow: none;
+    width: 100vw;
+    margin: 10px auto 15px;
+    padding: 15px 35px;
+  }
+
+  button {
+    display: none;
+
+  }
+
+  .container .produit table tr#toAddON td:last-of-type span#delete {
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 3px 5px;
+    background-color: gray !important;
+    box-shadow: none;
+  }
+
+  .container .produit table tr#toAddON td:nth-of-type(3) input,
+  .container .produit table tr#toAddON td:nth-of-type(4) input {
+    width: 8vw;
+    padding-right: 0;
+  }
+
+  .container .total {
+    margin-top: 25px;
+    margin-left: 50%;
+    border: 1px dashed black;
+    width: 52%;
+    padding: none !important;
+  }
+
+  input,
+  select {
+    border: 1px solid black !important;
+  }
+
+  span {
+    background-color: rgb(194, 191, 191) !important;
+  }
+}
+
+@media (max-width:711px) {
+
+  .container,
+  .print {
+    display: none;
+  }
+  body::after{
+    content: 'please use a wider screen !';
+    text-shadow: none;
+    color: #111616;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    width: fit-content;
+    font-size: 2rem;
+  }
+  body::before{
+    content: 'Thanks :)';
+    text-shadow: none;
+    color: #111616;
+    font-weight: bold;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%);
+    width: fit-content;
+    font-size: 2rem;
+  }
+}
